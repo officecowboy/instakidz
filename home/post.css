@@ -81,7 +81,9 @@
   margin-top: 0;
   margin-bottom: 15px;
   background: #3366CC;
-  border-radius: 10px;
+  border-radius: 8px;
+  text-align: center;
+  color: #86AEFF;
   width: 240px;
   padding: 3px 10px;
 }

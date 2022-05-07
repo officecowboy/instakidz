@@ -6,12 +6,17 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  color: #FFA71D;
-  font-family: 'Rodfellows Wacky';
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
 }
 
 .h1 {
   font-size: 24px;
+  font-family: 'Rodfellows Wacky';
   color: #FFCC00;
   text-shadow: 1px 1px 0px #000000;
 }
@@ -19,6 +24,12 @@ body {
 .h1:hover {
   color: #FFA71D;
   cursor: pointer;
+}
+
+.h2 {
+  font-size: 18px;
+  font-family: 'Rodfellows Wacky';
+  color: #FFA71D;
 }
 
 .interface-container {
@@ -79,18 +90,47 @@ body {
 }
 
 .window {
-  height: 450px;
+  height: 500px;
   width: 600px;
   background-color: lightgray;
   /* border-radius: 15px; */
-  box-shadow: inset 3px 4px 0px #000000;
+  box-shadow: inset 3px 4px 0px #1F448F;
   background: #6699FF;
+  overflow-x: scroll;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
 }
 
 
 .sidebar {
   border: black solid;
-  height: 450px;
+  height: 500px;
   width: 230px;
   margin-right: 20px;
+}
+
+/* width */
+.window::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+.window::-webkit-scrollbar-track {
+  background: #86AEFF;
+}
+
+/* Handle */
+.window::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #1477DB 0%, #3291FF 28.13%, #3366CC 54.69%, #28277D 100%);
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin: 2px;
+}
+
+.window::-webkit-scrollbar-button {
+  width: 2px;
+  background-color: #1F448F;
 }

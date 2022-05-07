@@ -1,46 +1,58 @@
-
-.postContainer{
-  background-color: #1F448F;
-  width: 35vw;
-  padding-top: 1.5vw;
-  padding-bottom: 5vw;
-  border-radius: 0 5% 5% 5%;
+.h1 {
+  font-size: 24px;
+  font-family: 'Rodfellows Wacky';
+  color: #FFCC00;
+  text-shadow: 1px 1px 0px #000000;
 }
 
-.tab-conatiner{
+.window {
+  height: 500px;
+  width: 600px;
+  background-color: lightgray;
+  box-shadow: inset 3px 4px 0px #1F448F;
+  background: #6699FF;
   display: flex;
   flex-direction: column;
-  height: 53px;
   align-items: center;
-  background-color: #1F448F;
-  width: 417px;
-  border-radius: 40% 40% 0 0;
+  justify-content: center;
 }
 
-.username-container {
+/* New Styling Starts HERE */
+.input-container {
+height: fit-content;
+width: fit-content;
+  }
+
+#image-input {
+  opacity: 0;
+  height: 174px;
+  width: 202px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  }
+
+  .click-this {
+    height: 174px;
+    width: 202px;
+    top: 0;
+    left: 0;
+  }
+
+.nav-buttons {
   display: flex;
   flex-direction: row;
-  background: #1F448F;
-  height: 53px;
-  width: 214px;
-  left: 0px;
-  border-radius: 30px 30px 0 0;
-  z-index: 2;
-}
-
-.delete-container {
-  display: flex;
-  flex-direction: row;
   align-items: center;
-  background-color: #3366CC;
-  height: 53px;
-  width: 214px;
-  left: 0px;
-  border-radius: 30px 30px 0 0;
-}
-.userRowPadding {
-  height: 1vw;
-  background-color: #1F448F;
-  width: 35vw;
+  justify-content: space-between;
+  width: 350px ;
+}  
+
+.check {
+  height: 170px;
+  width: 170px;
 }
 
+.loading {
+width: 250px;
+}

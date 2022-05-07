@@ -8,26 +8,117 @@
 </head>
 <body>
 
-<div class="post-container">
-<div class="card-container">
+<!-- Upload -->
+ <div class="window">
 
-<div class="tab-conatainer">
-  <div class="username-container">
-<p class="username">{Username}</p>
-  </div>
-  <div class="delete-container">
-    <p>X</p>
-  </div>
-</div>
+  <!-- <button id="token-button">Get CSRF Token</button> -->
+<!-- <button id="login-button">Log In</button>
+<button id="test-button">Test</button> -->
 
-<div class="card-body">
-  <img src="../profiles/purple.profile.png" class="post-img">
-  <p class="caption">“New selfie from dad’s iPad 💯 I love taking pics to share with all my friends on Instagram Kidz!!!!”</p>
-  <p class="timestamp">Posted on {time object}</p>
+<div class="input-container">
+  <img src="../assets/cartoon-polaroid-photo.png" class="click-this">
+  <input id="image-input" type="file" name="photo">
 </div>
+<h1>Add Memory</h1>
+<p>Click to upload image</p>
+<p>(5MB Maximum, JPEG and PNG supported)</p>
+<p class="h1">Upload Image</p>
 
-</div>
-</div>
+
+<script src="get-cookie.js"></script>
+<script>
+  let tokenButton = document.getElementById('token-button')
+  let loginButton = document.getElementById('login-button')
+  let testButton = document.getElementById('test-button')
+  let imageInput = document.getElementById('image-input')
+  let uploadButton = document.getElementById('upload-button')
+
+  let csrfToken = null
+  tokenButton.addEventListener('click', function() {
+    fetch('http://localhost:8000/csrf-cookie/', { credentials: 'include' })
+      .then(response=> { 
+        csrfToken = getCookie('csrftoken') 
+      })
+  })
+
+  loginButton.addEventListener('click', function() {
+    // Sending form data
+    let data = new FormData()
+    data.append("username", "admin")
+    data.append("password", "admin")
+
+    let options = {
+      method: 'POST',
+      headers: { "X-CSRFToken": csrfToken },
+      credentials: 'include',
+      body: data
+    }
+    fetch('http://localhost:8000/login/', options)
+      .then(response=> { 
+        csrfToken = getCookie('csrftoken') 
+      })
+  })
+
+  testButton.addEventListener('click', function() {
+    let options = {
+      headers: { "X-CSRFToken": csrfToken },
+      credentials: 'include'
+    }
+    fetch('http://localhost:8000/test/', options)
+      .then(response=> response.json())
+      .then(data=> console.log(data))
+  })
+
+  uploadButton.addEventListener('click', function() {
+
+    // Sending form data
+    let data = new FormData()
+    data.append("caption", "My cool pet")
+    data.append("photo", imageInput.files[0])
+    data.append("user", 1)
+    data.append("csrfmiddlewaretoken", csrfToken)
+
+    let options = {
+      method: 'POST',
+      headers: { "X-CSRFToken": csrfToken },
+      credentials: 'include',
+      body: data
+    }
+
+    fetch('http://localhost:8000/photo/', options)
+      .then(response=>response.json())
+      .then(data=>console.log(data))
+      .catch(error=>console.error(error))
+  })
+
+</script>
+
+ </div>
+
+ <!-- Success -->
+ <div class="window">
+<img src="../assets/darkbluecheck.png" class="check">
+<p>{file name} was successfully uploaded!</p>
+<nav class="nav-buttons">
+<p class="h1">Go Back</p>
+<p class="h1">Confirm Upload</p>
+</nav>
+ </div>
+
+ <!-- Failure -->
+ <div class="window">
+  <img src="../assets/redXsmall.png" class="check">
+  <p>{file name} was not successfully uploaded!</p>
+  <p class="h1">Upload another file</p>
+   </div>
+
+<!-- Loading -->
+<div class="window">
+    <p class="h1">Uploading...</p>
+    <img src="../assets/loading.gif" class="loading">
+
+     </div>
+
 
 </body>
 </html>

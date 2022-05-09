@@ -2,7 +2,7 @@ html,
 body {
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  background-image: url("/home/background2.jpg");
+  background-image: url("background2.jpg");
   background-color: #97d9fc;
   background-size: cover;
   background-repeat: no-repeat;

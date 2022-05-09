@@ -1,0 +1,86 @@
+.signup-input {
+  width: 200px;
+  background: #6699FF;
+  border: #FFA71D 2px solid;
+  height: 30px;
+  border-style: inset;
+}
+
+.tiny-text {
+  color: white;
+  font-size: 10pt;
+  margin: 0;
+}
+
+.profile-img {
+  width: 90px;
+  height: 90px;
+  padding: 10px;
+}
+
+.sidebar-user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-user-info-container {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.search-container {
+  display: flex;
+}
+
+.scroll-container {
+  margin-top: 10px;
+  padding: 0;
+  background: #6699FF;
+  border-left: 2px solid #1F448F;
+  border-top: 3px solid #1F448F;
+  height: 220px;
+  overflow: scroll;
+}
+
+.scroll-container>ul {
+  margin: 0;
+  list-style-type: none;
+  padding: 10px 20px;
+}
+
+.scroll-container>ul>li {
+  padding: 2px 0;
+}
+
+/* width */
+.scroll-container::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+.scroll-container::-webkit-scrollbar-track {
+  background: #86AEFF;
+}
+
+/* Handle */
+.scroll-container::-webkit-scrollbar-thumb {
+  background: #1F448F;
+  border: 2px solid #527FDC;
+  border-radius: 20px;
+  box-sizing: border-box;
+  margin: 2px;
+}
+
+.scroll-container::-webkit-scrollbar-button {
+  width: 2px;
+  background-color: #1F448F;
+}
+
+.scroll-container::-webkit-scrollbar-corner {
+  background: #1F448F;
+  border: 2px solid #527FDC;
+}

@@ -1,0 +1,45 @@
+.form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form-footer>a {
+  text-decoration: none;
+}
+
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0;
+}
+
+
+.signup-input {
+  width: 250px;
+  color: #1F448F;
+  background: #6699FF;
+  border: #9e9e9e 2px solid;
+  height: 40px;
+  margin: 10px 20px 10px 20px;
+  border-style: inset;
+}
+
+.signup-input::placeholder {
+  color: #1F448F;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-logo {
+  width: 300px;
+  z-index: 2;
+  position: absolute;
+  top: -99px;
+  left: 22px;
+}

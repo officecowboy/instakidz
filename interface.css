@@ -141,3 +141,33 @@ body {
   margin: 2px;
   cursor: pointer;
 }
+
+.upload {
+  height: 480px;
+  width: 600px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-border {
+  height: 390px;
+  width: 500px;
+  border: 2px dashed #1F448F;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-icon {
+  max-width: 200px;
+  padding: 20px 0;
+}
+
+.upload-text {
+  padding: 20px 0;
+  color: #1F448F;
+  text-align: center;
+  line-height: 1.5;
+}

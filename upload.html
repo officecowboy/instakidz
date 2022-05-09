@@ -1,124 +1,128 @@
-<meta>
+<!doctype html>
+<html lang="en">
+
 <head>
-<link rel="stylesheet" href="uploadstyling.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
-<meta charset="utf.8">
+  <link rel="stylesheet" href="uploadstyling.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <meta charset="utf.8">
 </head>
+
 <body>
 
-<!-- Upload -->
- <div class="window">
+  <!-- Upload -->
+  <div class="window">
 
-  <!-- <button id="token-button">Get CSRF Token</button> -->
-<!-- <button id="login-button">Log In</button>
+    <!-- <button id="token-button">Get CSRF Token</button> -->
+    <!-- <button id="login-button">Log In</button>
 <button id="test-button">Test</button> -->
 
-<div class="input-container">
-  <img src="/assets/cartoon-polaroid-photo.png" class="click-this">
-  <input id="image-input" type="file" name="photo">
-</div>
-<h1>Add Memory</h1>
-<p>Click to upload image</p>
-<p>(5MB Maximum, JPEG and PNG supported)</p>
-<p class="h1">Upload Image</p>
+    <div class="input-container">
+      <img src="/assets/cartoon-polaroid-photo.png" class="click-this">
+      <input id="image-input" type="file" name="photo">
+    </div>
+    <h1>Add Memory</h1>
+    <p>Click to upload image</p>
+    <p>(5MB Maximum, JPEG and PNG supported)</p>
+    <p class="h1">Upload Image</p>
 
 
-<script src="get-cookie.js"></script>
-<script>
-  let tokenButton = document.getElementById('token-button')
-  let loginButton = document.getElementById('login-button')
-  let testButton = document.getElementById('test-button')
-  let imageInput = document.getElementById('image-input')
-  let uploadButton = document.getElementById('upload-button')
+    <script src="get-cookie.js"></script>
+    <script>
+      let tokenButton = document.getElementById('token-button')
+      let loginButton = document.getElementById('login-button')
+      let testButton = document.getElementById('test-button')
+      let imageInput = document.getElementById('image-input')
+      let uploadButton = document.getElementById('upload-button')
 
-  let csrfToken = null
-  tokenButton.addEventListener('click', function() {
-    fetch('http://localhost:8000/csrf-cookie/', { credentials: 'include' })
-      .then(response=> { 
-        csrfToken = getCookie('csrftoken') 
+      let csrfToken = null
+      tokenButton.addEventListener('click', function () {
+        fetch('http://localhost:8000/csrf-cookie/', { credentials: 'include' })
+          .then(response => {
+            csrfToken = getCookie('csrftoken')
+          })
       })
-  })
 
-  loginButton.addEventListener('click', function() {
-    // Sending form data
-    let data = new FormData()
-    data.append("username", "admin")
-    data.append("password", "admin")
+      loginButton.addEventListener('click', function () {
+        // Sending form data
+        let data = new FormData()
+        data.append("username", "admin")
+        data.append("password", "admin")
 
-    let options = {
-      method: 'POST',
-      headers: { "X-CSRFToken": csrfToken },
-      credentials: 'include',
-      body: data
-    }
-    fetch('http://localhost:8000/login/', options)
-      .then(response=> { 
-        csrfToken = getCookie('csrftoken') 
+        let options = {
+          method: 'POST',
+          headers: { "X-CSRFToken": csrfToken },
+          credentials: 'include',
+          body: data
+        }
+        fetch('http://localhost:8000/login/', options)
+          .then(response => {
+            csrfToken = getCookie('csrftoken')
+          })
       })
-  })
 
-  testButton.addEventListener('click', function() {
-    let options = {
-      headers: { "X-CSRFToken": csrfToken },
-      credentials: 'include'
-    }
-    fetch('http://localhost:8000/test/', options)
-      .then(response=> response.json())
-      .then(data=> console.log(data))
-  })
+      testButton.addEventListener('click', function () {
+        let options = {
+          headers: { "X-CSRFToken": csrfToken },
+          credentials: 'include'
+        }
+        fetch('http://localhost:8000/test/', options)
+          .then(response => response.json())
+          .then(data => console.log(data))
+      })
 
-  uploadButton.addEventListener('click', function() {
+      uploadButton.addEventListener('click', function () {
 
-    // Sending form data
-    let data = new FormData()
-    data.append("caption", "My cool pet")
-    data.append("photo", imageInput.files[0])
-    data.append("user", 1)
-    data.append("csrfmiddlewaretoken", csrfToken)
+        // Sending form data
+        let data = new FormData()
+        data.append("caption", "My cool pet")
+        data.append("photo", imageInput.files[0])
+        data.append("user", 1)
+        data.append("csrfmiddlewaretoken", csrfToken)
 
-    let options = {
-      method: 'POST',
-      headers: { "X-CSRFToken": csrfToken },
-      credentials: 'include',
-      body: data
-    }
+        let options = {
+          method: 'POST',
+          headers: { "X-CSRFToken": csrfToken },
+          credentials: 'include',
+          body: data
+        }
 
-    fetch('http://localhost:8000/photo/', options)
-      .then(response=>response.json())
-      .then(data=>console.log(data))
-      .catch(error=>console.error(error))
-  })
+        fetch('http://localhost:8000/photo/', options)
+          .then(response => response.json())
+          .then(data => console.log(data))
+          .catch(error => console.error(error))
+      })
 
-</script>
+    </script>
 
- </div>
+  </div>
 
- <!-- Success -->
- <div class="window">
-<img src="/assets/darkbluecheck.png" class="check">
-<p>{file name} was successfully uploaded!</p>
-<nav class="nav-buttons">
-<p class="h1">Go Back</p>
-<p class="h1">Confirm Upload</p>
-</nav>
- </div>
+  <!-- Success -->
+  <div class="window">
+    <img src="/assets/darkbluecheck.png" class="check">
+    <p>{file name} was successfully uploaded!</p>
+    <nav class="nav-buttons">
+      <p class="h1">Go Back</p>
+      <p class="h1">Confirm Upload</p>
+    </nav>
+  </div>
 
- <!-- Failure -->
- <div class="window">
-  <img src="/assets/redXsmall.png" class="check">
-  <p>{file name} was not successfully uploaded!</p>
-  <p class="h1">Upload another file</p>
-   </div>
+  <!-- Failure -->
+  <div class="window">
+    <img src="/assets/redXsmall.png" class="check">
+    <p>{file name} was not successfully uploaded!</p>
+    <p class="h1">Upload another file</p>
+  </div>
 
-<!-- Loading -->
-<div class="window">
+  <!-- Loading -->
+  <div class="window">
     <p class="h1">Uploading...</p>
     <img src="/assets/loading.gif" class="loading">
 
-     </div>
+  </div>
 
 
 </body>
+
 </html>
